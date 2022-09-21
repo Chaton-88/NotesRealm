@@ -9,7 +9,7 @@ import Foundation
 
 import RealmSwift
 
-let realm = try! Realm() // Доступ к хранилищу
+let realm = try! Realm() 
 
 class StorageManager {
     

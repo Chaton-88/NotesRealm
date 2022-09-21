@@ -12,9 +12,9 @@ import RealmSwift
 final class ViewController: UIViewController {
     
     let tableView = UITableView(frame: .zero, style: .plain)
-    private let cellId = "cellId" // Идентификатор ячейки
+    private let cellId = "cellId"
     
-    var items: Results<TaskList>! // Контейнер со свойствами объекта TaskList
+    var items: Results<TaskList>!
     
     private lazy var addBarButtonItem: UIBarButtonItem = {
         let button = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .done, target: self, action: #selector(addBarButtonTapped))
@@ -30,12 +30,11 @@ final class ViewController: UIViewController {
         super.viewDidLoad()
        
         self.title = "Notes"
-        view.backgroundColor = .white // Цвет заливки
+        view.backgroundColor = .white
         
         view.addSubview(noNotesLabel)
         tableView.reloadData()
         
-        // Отображение данных на экране при закуске приложения
         items = realm.objects(TaskList.self)
         
         setupTableView()
@@ -90,7 +89,6 @@ final class ViewController: UIViewController {
     // MARK: - configure navigation bar
     private func configureNavigationBar() {
         
-        // Добавление кнопки в навигейшн бар
         navigationItem.rightBarButtonItem = addBarButtonItem
     }
 }
@@ -102,6 +100,7 @@ extension ViewController: UITableViewDataSource {
         
         guard items.isEmpty else { return items.count }
         tableView.isHidden = true
+        
         return 0
     }
     
@@ -119,7 +118,6 @@ extension ViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 extension ViewController: UITableViewDelegate {
     
-    // нажатие на ячейку
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         guard let indexPath = tableView.indexPathForSelectedRow else { return }
@@ -133,7 +131,6 @@ extension ViewController: UITableViewDelegate {
         navigationController?.pushViewController(vc, animated: true)
     }
     
-    // удаление ячейки
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {

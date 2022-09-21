@@ -66,7 +66,6 @@ final class NoteViewController: UIViewController {
     }
     
     @objc func editingChanged(_ textField: UITextField) {
-        //текст изменился
         saveBarButtonItem.isEnabled = true
     }
 }

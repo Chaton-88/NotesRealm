@@ -15,7 +15,6 @@ final class EntryViewController: UIViewController {
         titleField.translatesAutoresizingMaskIntoConstraints = false
         titleField.borderStyle = .roundedRect
         titleField.placeholder = "Enter notes the topic"
-        // первым покажет клавиатуру
         titleField.becomeFirstResponder()
         return titleField
     }()
@@ -33,7 +32,6 @@ final class EntryViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         configureSaveButton()
-        
     }
     
     // MARK: - setup views
